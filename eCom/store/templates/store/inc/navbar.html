@@ -1,0 +1,60 @@
+
+{% load static %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid" style="background-color: rgba(75, 79, 57, 0.481); color: rgb(8, 8, 8); padding: 10px;">
+      <a class="navbar-brand" href="{% url 'home' %}" style="color: rgba(60, 69, 52, 0.907);font-weight: 700;">The Lit Lounge </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color: beige; font-weight: 700;" >The web framework for perfectionists with deadlines</span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style="color: azure;"  href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'collections' %}"  style="color: beige;">Books</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href=""  style="color: rgb(255, 255, 255);">MysteryBox</a>
+          </li>
+          
+          {% if request.user.is_authenticated  %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ request.user  }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href= "{% url 'logout' %}" >Log out</a></li>
+            </ul>
+          </li>
+          {% else %}
+
+          <li class="nav-item">
+            <a class="nav-link" href= "{% url  'login'  %}" > Login </a>
+          </li> 
+         
+
+          <li class="nav-item">
+            <a href="{% url 'register' %} " class="nav-link">  Register  </a>
+          </li>
+
+          {% endif %}
+     
+        </ul>
+        <form class="d-flex search-form me-3" role="search">
+          <div class="search-wrapper">
+            <input class="form-control search-input rounded-input"
+                   type="search"
+                   placeholder="Search Books, Authors and more"
+                   aria-label="Search" />
+            <i class="bi bi-search search-icon"></i>
+
+          </div>
+          <i class="bi bi-bag-heart " style="font-size: 24px; color: rgb(255, 255, 255);margin-right: 8px;"></i>
+          <i class="bi bi-person-add" style="font-size: 27px; color: rgb(255, 255, 255);"></i>
+        </form>
+      </div>
+    </div>
+  </nav>

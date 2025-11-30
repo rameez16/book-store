@@ -1,0 +1,49 @@
+{% extends 'store/layouts/main.html' %}
+
+
+
+{% block content %}
+
+{% include 'store/inc/breadcrump.html' %}
+
+<div class="container">
+     
+    <div class="row">
+       {% for item in products %}
+
+        <div class="col-3">
+
+        <a href= "{% url 'productview' item.category.slug  item.slug  %}">
+           
+            <div class="card">
+                <div class="card-title">
+                    <div class="card-body">  <img src="{{item.product_image.url}}" class="w-75"></div>
+                    <h6 class="text-left p-2 truncate-200" >{{item.small_description}}</h5>
+                        
+                </div>
+
+                <div class="card-body">
+                  <span style="font-size: 12px;">4.4</span>  <i class="bi bi-star-fill" style="color: #f1ba04;font-size: 12px;"></i>
+                    <i class="bi bi-star-fill" style="color: #f1ba04;font-size: 12px;"></i>
+                    <i class="bi bi-star-fill" style="color: #f1ba04;font-size: 12px;"></i>
+                    <i class="bi bi-star-fill" style="color: #f1ba04;font-size: 12px;"></i>
+                    <i class="bi bi-star-fill" style="color: #f1ba04;font-size: 12px;"></i> <span style="font-size: 12px;color: rgba(0, 0, 0, 0.561);">(4.9)k</span>
+                    <p style="font-size: 14px;color: rgba(0, 0, 0, 0.561);">1K+ bought in past month</p>
+                    <span style="font-size: 20px;color: rgba(0, 0, 0, 0.916);font-weight: 700;">{{item.selling_price}}</span>  <span style="font-size: 14px;color: rgba(0, 0, 0, 0.561);">M.R.P : <s> {{item.original_price}} </s>  </span> <span style="font-size: 12px;color: rgba(0, 0, 0, 0.561);">(4.9)k</span>
+                    <button class="btn btn-warning  rounded-pill">Buy Now</button>
+                    
+                
+
+                </div>
+            </div>
+        </a>
+            
+        </div>
+
+      {% endfor %}
+    
+    </div>
+
+</div>
+
+{% endblock %}

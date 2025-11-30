@@ -1,0 +1,56 @@
+.truncate-200 {
+    height: 150px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+
+/* Increase width of wrapper */
+/* Make search wrapper bigger */
+.navbar .search-wrapper {
+    position: relative;
+    width: 400px !important;   /* Increase to 400px/500px as you like */
+    margin-right: 15px;
+}
+
+/* Make the input fill the wrapper */
+.navbar .search-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 40px !important; /* space for icon */
+    height: 32px !important; 
+}
+
+/* Search icon styling */
+.navbar .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.rounded-input {
+    border-radius: 22px !important;   /* change to 20px / 30px for more roundness */
+}
+
+
+.search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important; 
+}
+
+
+.search-input::placeholder {
+    font-size: 14px !important;   /* change to 10px / 11px / 13px as needed */
+    color: #999; /* optional: lighter color */
+}
+
+.search-form{
+    margin-top: 12px;
+}
