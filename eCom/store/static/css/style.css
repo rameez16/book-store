@@ -54,3 +54,12 @@
 .search-form{
     margin-top: 12px;
 }
+
+
+
+/* product-detailing page*/
+
+.addtocartbtn {
+    background-color: rgb(102, 6, 6) !important;
+    color: white !important;
+}
