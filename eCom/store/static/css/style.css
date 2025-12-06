@@ -63,3 +63,131 @@
     background-color: rgb(102, 6, 6) !important;
     color: white !important;
 }
+
+
+/* Custom Alertify Theme */
+.alertify .ajs-dimmer {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.alertify .ajs-dialog {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+}
+
+.alertify .ajs-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+.alertify .ajs-body {
+    color: #333;
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.alertify .ajs-footer {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 0 0 12px 12px;
+}
+
+.alertify .ajs-commands button {
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.alertify .ajs-ok {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+}
+
+.alertify .ajs-ok:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.alertify .ajs-cancel {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+}
+
+.alertify .ajs-cancel:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Custom Notification Styles */
+.alertify-notifier .ajs-message {
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 15px 20px;
+    font-weight: 500;
+    border-left: 4px solid;
+    backdrop-filter: blur(10px);
+}
+
+.alertify-notifier .ajs-message.ajs-success {
+    background: rgba(40, 167, 69, 0.95);
+    border-left-color: #28a745;
+    color: white;
+}
+
+.alertify-notifier .ajs-message.ajs-error {
+    background: rgba(220, 53, 69, 0.95);
+    border-left-color: #dc3545;
+    color: white;
+}
+
+.alertify-notifier .ajs-message.ajs-warning {
+    background: rgba(255, 193, 7, 0.95);
+    border-left-color: #ffc107;
+    color: #212529;
+}
+
+.alertify-notifier .ajs-message.ajs-info {
+    background: rgba(23, 162, 184, 0.95);
+    border-left-color: #17a2b8;
+    color: white;
+}
+
+/* Animation Effects */
+.ajs-message {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.ajs-message.ajs-closing {
+    animation: slideOutRight 0.3s ease-in;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

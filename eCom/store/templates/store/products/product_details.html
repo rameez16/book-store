@@ -108,15 +108,16 @@
                       
 
 
-                           <div class="row mt-2">
-                              <div class="col-md-3 product_id" value="{{product.id}}" >
-                                 <input type="hidden">
+                           <div class="row mt-2 prod">
+                              {% csrf_token %}
+                              <div class="col-md-3 " >
+                                 <input  class="product-id" type="hidden" value="{{product.id}}">
                                  <label for="">Quantity</label>
 
                                  <div class="input-group text-center mb-3" style="width: 130px;">
 
                                     <button type="button" class="btn btn-outline-secondary decrement-button">-</button>
-                                    <input type="number" name="quantity" class="qty-input text-center"
+                                    <input type="number" name="quantity" class="product_qty text-center"
                                        value="1" min="1" max="{{product.quantity}}">
                                        <button type="button" class="btn btn-outline-secondary increment-button">+</button>
                                  </div>

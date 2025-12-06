@@ -1,23 +1,52 @@
 
 {% load static %}
+<style>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid" style="background-color: rgba(75, 79, 57, 0.481); color: rgb(8, 8, 8); padding: 10px;">
-      <a class="navbar-brand" href="{% url 'home' %}" style="color: rgba(60, 69, 52, 0.907);font-weight: 700;">The Lit Lounge </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  .glass-nav{
+    background: rgba(255, 255, 255, 0.15);   /* transparent white */
+  backdrop-filter: blur(10px);             /* glass blur */
+  -webkit-backdrop-filter: blur(10px);     /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  }
+  navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+  color: #e2e2e2 !important;
+}
+
+/* .navbar-brand {
+  color: #fff !important;
+  font-weight: 600;
+} */
+
+/* When using fixed-top, add padding to body */
+body {
+  padding-top: 70px;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg  glass-nav fixed-top">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="{% url 'home' %}" style="color: rgba(12, 12, 11, 0.907);font-weight: 700; font-family:Oxygen">Next-Book.com</a>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" style="color: beige; font-weight: 700;" >The web framework for perfectionists with deadlines</span>
-      </button>
+      </button> -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" style="color: azure;"  href="{% url 'home' %}">Home</a>
+            <a class="nav-link active" aria-current="page"  href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'collections' %}"  style="color: beige;">Books</a>
+            <a class="nav-link" href="{% url 'collections' %}" >Books</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href=""  style="color: rgb(255, 255, 255);">MysteryBox</a>
+            <a class="nav-link" href=""  >MysteryBox</a>
           </li>
           
           {% if request.user.is_authenticated  %}
@@ -52,8 +81,8 @@
             <i class="bi bi-search search-icon"></i>
 
           </div>
-          <i class="bi bi-bag-heart " style="font-size: 24px; color: rgb(255, 255, 255);margin-right: 8px;"></i>
-          <i class="bi bi-person-add" style="font-size: 27px; color: rgb(255, 255, 255);"></i>
+          <a href="{% url 'cart' %}"><i class="bi bi-bag-heart " style="font-size: 24px; color: rgba(146, 10, 10, 0.932);margin-right: 8px;"></i></a>
+          <i class="bi bi-person-add" style="font-size: 27px; color: rgb(10, 9, 9);"></i>
         </form>
       </div>
     </div>

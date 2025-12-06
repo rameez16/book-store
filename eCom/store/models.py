@@ -36,7 +36,8 @@ class ProductItem(models.Model):
     
     category=models.ForeignKey(Category,on_delete=models.CASCADE,null=True, blank=True)
     slug =models.CharField(max_length=50,null=False,blank=False)
-    name=models.CharField(max_length=50,null=False,blank=False)    
+    name=models.CharField(max_length=50,null=False,blank=False)  
+    author=models.CharField(max_length=50,null=True,blank=False)  
     product_image=models.ImageField(upload_to=get_file_path,null=False,blank=False)
     small_description=models.TextField(max_length=575,null=False,blank=False)
     quantity=models.IntegerField(null=False,blank=False)
@@ -48,9 +49,9 @@ class ProductItem(models.Model):
     
     
     status=models.BooleanField(default=False,help_text='0=default,1-Hidden')
-    meta_title=models.CharField(max_length=10,null=False,blank=False)
-    meta_keyword=models.CharField(max_length=15,null=False,blank=False)
-    meta_description=models.TextField(max_length=320,null=False,blank=False)
+    meta_title=models.CharField(max_length=10,null=True,blank=False)
+    meta_keyword=models.CharField(max_length=15,null=True,blank=False)
+    meta_description=models.TextField(max_length=320,null=True,blank=False)
     created_at=models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
     
@@ -62,7 +63,7 @@ class ProductItem(models.Model):
 class Cart(models.Model) :
     
     user=models.ForeignKey(User,on_delete=models.CASCADE)   
-    product_id=models.ForeignKey(ProductItem,on_delete=models.CASCADE)
+    product=models.ForeignKey(ProductItem,on_delete=models.CASCADE)
     product_qty=models.IntegerField(null=False,blank=False)
     created_at=models.DateTimeField(auto_now_add=True)
     

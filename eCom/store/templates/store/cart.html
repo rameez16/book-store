@@ -1,0 +1,130 @@
+
+
+
+{% extends 'store/layouts/main.html' %}
+{% load static %}
+
+
+
+{% block content%}
+
+<style>
+
+.qty-input,.decrement-btn,.incriment-btn{
+
+ width: 33px !important;
+ text-align: center;
+ padding: 3px;
+ border: 1px solid rgb(95, 95, 95);
+ border-radius: 5px;
+ font-size: 14px;
+ font-weight: 600;
+ 
+
+}
+
+.decrement-btn,.incriment-btn{
+    background-color: rgba(1, 17, 12, 0.877);
+    color: aliceblue;
+
+}
+
+.remove-product-btn{
+    width: 120px;
+    background-color: rgba(15, 12, 12, 0.918);
+    
+    border: 1px solid rgb(41, 27, 27);
+    color: rgba(224, 224, 224, 0.822);
+    font-weight: 600;
+    font-size: 14px;
+
+}
+
+</style>
+
+<div class="container">
+
+  
+    {% if cart_items|length == 0  %}
+
+    <div class="container">
+     
+        <div class="d-flex just justify-content-center align-items-center">
+            <img src="{% static 'images/empty_cart.jpg' %}" style="width: 300px; height: 300px;" alt="cart image">
+            <h5 class="text-center" style="color: rgb(74, 73, 73);margin-top: 50px;" > Your Cart is empty   ! <br> Please  add items to your cart! </h5>
+        </div>
+
+        </div>
+       
+
+    {% else %}
+  
+  <div class="container" style="padding: 80px; border: 1px solid rgb(172, 172, 175); background-color: rgba(204, 203, 202, 0.055);border-radius: 10px;">
+
+     <p style="font-size: 25px;">Books in Cart</p>
+
+    {% for item in cart_items  %}
+
+
+    <div class="card">
+ 
+ 
+     <div class="row p-2">
+ 
+ 
+         <div class="col-md-3">
+             <img src="{{item.product.product_image.url}}" alt="" style="width: 150px;height: 200px;">
+         </div>
+ 
+         <div class="col-md-6">
+            
+             <h5>{{item.product.name}}</h5>
+             <p>{{item.product.author}}</p>
+             {% if item.product.quantity > 0 %}
+              <label for="" style="color: green;">In stock</label>
+ 
+              {% else %}
+ 
+              <label for="" color="red"> Out of stock </label>
+ 
+              {% endif %}
+              <p>FREE delivery Available</p>
+              <input type="checkbox">
+              <label for="">Wrap in Giftbox</label>
+    
+              <div class="input-group mt-2">
+ 
+                 <button class="Change-quantity decrement-button">-</button>
+                 <input type="text"  value="{{ item.product_qty }}" class="qty-input">
+                 <button class="Change-quantity increment-button">+</button>
+ 
+              </div>
+            
+ 
+ 
+         </div>
+ 
+         <div class="col-md-3 mt-2 ">
+             <div class="d-flex flex-column justify-content-between h-100 ">
+             <h5 class="float-end d-inline-block">Rs : {{ item.product.selling_price }}</h5>
+             <button class="remove-product-btn " >Remove</button>
+         </div>
+             
+         </div>
+     </div>
+    </div>
+    <hr>
+ 
+    {% endfor %}
+
+
+  </div>
+  
+
+   {% endif %}
+
+
+</div>
+
+
+{% endblock %}
