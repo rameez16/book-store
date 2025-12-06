@@ -42,7 +42,7 @@
 
 </style>
 
-<div class="container">
+<div class="container mt-5 mb-5 w-50">
 
   
     {% if cart_items|length == 0  %}
@@ -93,10 +93,17 @@
               <label for="">Wrap in Giftbox</label>
     
               <div class="input-group mt-2">
+
+                <!-- each cart item has a quantity-control section with increment and decrement buttons and an 
+                input field showing the current quantity. The change-quantity class is applied to both increment and decrement buttons,
+                so the same JavaScript function can handle them. -->
+                <!-- This setup will allow the same JavaScript logic to handle both the product detail view and the cart view, 
+                making code more modular and reusable. -->
+               
  
-                 <button class="Change-quantity decrement-button">-</button>
-                 <input type="text"  value="{{ item.product_qty }}" class="qty-input">
-                 <button class="Change-quantity increment-button">+</button>
+                 <button class="change-quantity decrement-button">-</button>
+                 <input type="text" max="{{item.product.quantity}}"  value="{{ item.product_qty }}" class="product_qty">
+                 <button class="change-quantity increment-button">+</button>
  
               </div>
             

@@ -1,20 +1,24 @@
 $(document).ready(function () {
     console.log("jQuery + custom.js are working!");
+      
 
-    console.log($(".addtocartbtn").length); 
+  
     // increment function
     $(".increment-button").on("click", function (e) {
 
         e.preventDefault();
+          
+       
  
-
-         let input = $(this).closest(".input-group").find(".qty-input");
+         let input = $(this).closest(".input-group").find(".product_qty");
         //  ✔️ $(this).closest(..).find(..)
         // → Tells jQuery:
         // “Start from the button I clicked, go up until you find the nearest parent container, then look inside that container only.”
         // This makes sure each product controls its own quantity.
 
         let quantity = parseInt(input.val(),10)
+
+        console.log(quantity)
 
         let max = parseInt(input.attr("max"));
 
@@ -36,12 +40,12 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-         let input = $(this).closest(".input-group").find(".qty-input");
+         let input = $(this).closest(".input-group").find(".product_qty");
      
 
         let quantity = parseInt(input.val(),10)
 
-   
+        
 
         if (quantity > 1) {
 
@@ -167,8 +171,8 @@ function initAlertify() {
     };
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', initAlertify);
+
+
 
  
 });

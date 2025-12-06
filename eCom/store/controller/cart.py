@@ -74,5 +74,32 @@ def cartview(request):
      return  render(request,'store/cart.html',context)   
     
     
-
+def updatecart(request):
+    
+    user=request.user
+    if user.is_authenticated:
+    
+        product_id=request.POST.get('product_id')
+        product_quantity=request.POST.get('product_qty')
+        product=Cart.objects.filter(user=user,product_id=product_id)
+     
+        if product is not None :
+         
+                product.product.quantity=product_quantity
+                product.save()
+         
+        else:
+         
+             return JsonResponse({'status':'product not fond'})
+    else:
+        
+        return JsonResponse({'status':'user not logged in '})    
+         
+    
+    
+        
+        
+        
+        
+        
 

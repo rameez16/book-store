@@ -15,7 +15,8 @@ urlpatterns = [
     path('login/',authview.login_page,name="login"),
     path('logout/',authview.logout_page,name='logout'),
     path('add-to-cart',cart.addtocart,name='add-to-cart'),
-    path('cart',cart.cartview,name='cart')
+    path('cart',cart.cartview,name='cart'),
+    path('update-cart',cart.updatecart,name='update-cart')
 ]
 
 
