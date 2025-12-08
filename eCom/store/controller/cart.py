@@ -81,12 +81,13 @@ def updatecart(request):
     
         product_id=request.POST.get('product_id')
         product_quantity=request.POST.get('product_qty')
-        product=Cart.objects.filter(user=user,product_id=product_id)
+        product=Cart.objects.get(user=user,product_id=product_id)
      
         if product is not None :
          
-                product.product.quantity=product_quantity
+                product.product_qty=product_quantity
                 product.save()
+                return JsonResponse({'status':'product quantity updated'})
          
         else:
          
@@ -96,7 +97,30 @@ def updatecart(request):
         return JsonResponse({'status':'user not logged in '})    
          
     
+def delete_cart_item(request):
     
+    user=request.user
+    
+    product_id=request.POST.get('product_id')
+    
+    if request.method=='POST':
+        
+        if user.is_authenticated:
+            
+            item=Cart.objects.get(user=user,product_id=product_id)
+            item.delete()
+            
+            return JsonResponse({'status':'item removed from cart'})
+        
+        else:
+            
+            return JsonResponse({'status':'user not logged in'})
+        
+    else:
+        redirect('/')            
+            
+    
+        
         
         
         

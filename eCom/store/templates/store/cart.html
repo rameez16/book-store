@@ -10,31 +10,31 @@
 
 <style>
 
-.qty-input,.decrement-btn,.incriment-btn{
+.product_qty,.decrement-button,.increment-button{
 
- width: 33px !important;
+ width: 40px !important;
  text-align: center;
- padding: 3px;
- border: 1px solid rgb(95, 95, 95);
- border-radius: 5px;
- font-size: 14px;
- font-weight: 600;
+ 
+ border: 1px solid rgb(95, 95, 95) !important;
+ font-size: 14px !important;
+ font-weight: 600 !important;
  
 
 }
 
-.decrement-btn,.incriment-btn{
-    background-color: rgba(1, 17, 12, 0.877);
-    color: aliceblue;
+.decrement-button,.increment-button{
+    background-color: rgba(1, 17, 12, 0.877) !important;
+    color: aliceblue !important;
 
 }
 
-.remove-product-btn{
+.remove-item{
     width: 120px;
-    background-color: rgba(15, 12, 12, 0.918);
+    background-color: rgba(151, 8, 8, 0.918);
+    border-radius: 5px;
     
     border: 1px solid rgb(41, 27, 27);
-    color: rgba(224, 224, 224, 0.822);
+    color: rgba(248, 248, 248, 0.822);
     font-weight: 600;
     font-size: 14px;
 
@@ -66,7 +66,7 @@
     {% for item in cart_items  %}
 
 
-    <div class="card">
+    <div class="card cartdata">
  
  
      <div class="row p-2">
@@ -100,7 +100,8 @@
                 <!-- This setup will allow the same JavaScript logic to handle both the product detail view and the cart view, 
                 making code more modular and reusable. -->
                
- 
+                 <input type="hidden" value="{{item.product.id}}" class="prod-id">
+                 {% csrf_token %}
                  <button class="change-quantity decrement-button">-</button>
                  <input type="text" max="{{item.product.quantity}}"  value="{{ item.product_qty }}" class="product_qty">
                  <button class="change-quantity increment-button">+</button>
@@ -111,10 +112,11 @@
  
          </div>
  
-         <div class="col-md-3 mt-2 ">
+         <div class="col-md-3 mt-2 remove">
+             <input type="hidden" value="{{item.product.id}}" class="prod-id">
              <div class="d-flex flex-column justify-content-between h-100 ">
              <h5 class="float-end d-inline-block">Rs : {{ item.product.selling_price }}</h5>
-             <button class="remove-product-btn " >Remove</button>
+             <button class="remove-item" >Remove</button>
          </div>
              
          </div>
