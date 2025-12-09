@@ -40,9 +40,18 @@
 
 }
 
+.checkout-btn{
+   
+    border-radius: 2px;
+    padding: 10px;
+    background-color: rgb(13, 13, 14);
+    color: rgb(255, 255, 255);
+    float: right;
+}
+
 </style>
 
-<div class="container mt-5 mb-5 w-50">
+<div class="container mt-5 mb-5 w-75">
 
   
     {% if cart_items|length == 0  %}
@@ -63,6 +72,8 @@
 
      <p style="font-size: 25px;">Books in Cart</p>
 
+     
+
     {% for item in cart_items  %}
 
 
@@ -73,7 +84,7 @@
  
  
          <div class="col-md-3">
-             <img src="{{item.product.product_image.url}}" alt="" style="width: 150px;height: 200px;">
+             <img src="{{item.product.product_image.url}}" alt="" style="width: 130px;height: 180px;padding:5px;">
          </div>
  
          <div class="col-md-6">
@@ -125,6 +136,8 @@
     <hr>
  
     {% endfor %}
+
+    <a href="{% url 'checkout' %}" class="btn checkout-btn">Checkout</a>
 
 
   </div>

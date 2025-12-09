@@ -37,11 +37,12 @@ label .trending-label {
         {% for item in data%}
         <div class="col-md-3">
            
-            <div class="card d-flex flex-column justify-content-center align-items-center h-75 w-75">
+            <div class="card d-flex flex-column justify-content-center align-items-center h-100 w-75">
                 <div class="card-title">
-                    <label for="" class="trending-label mt-2"  style="background-color: black;color: beige;padding: 5px;font-family: 'Nunito', sans-serif;">Trending</label>
+                    <label for="" class="trending-label mt-2"  style="background-color: black;color: beige;padding: 5px;font-family: 'Nunito', sans-serif;font-size: 12px;">Trending</label>
                 </div>
                 <div class="card-body">
+
                   <img src=" {{item.product_image.url}}" alt="" width="150px" height="200px" >  
                   <h6>{{item.name}} </h6>
                   <p>{{item.author}}</p>

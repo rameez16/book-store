@@ -1,0 +1,132 @@
+{% extends 'store/layouts/main.html'%}
+
+
+{% block content %}
+
+
+ 
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-7">
+                
+                <div class="card mt-5 mb-5">
+
+                    <dv class="card-title p-2 text-center">
+                        <h5>Basic Details</h5>
+                        <hr>
+                    </dv>
+                    
+                    <div class="card-body">
+                        <div class="row"> 
+               
+                            <div class="col-md-6">
+                                <label for="">First Name</label>
+                                <input type="text" placeholder="enter first name" class="form-control">
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Last Name</label>
+                                <input type="text" placeholder="enter last name" class="form-control">
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">e-mail</label>
+                                <input type="email" placeholder="enter email name" class="form-control">
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Phone</label>
+                                <input type="text" placeholder="enter phone number" class="form-control">
+            
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="">Address</label>
+                                <textarea type="text" placeholder="enter first Address" class="form-control"></textarea>
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">State</label>
+                                <input type="text" placeholder="enter state" class="form-control">
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Country</label>
+                                <input type="text" placeholder="enter country" class="form-control">
+            
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">PinCode</label>
+                                <input type="text" placeholder="enter PinCode" class="form-control">
+            
+                            </div>
+                            
+                         
+                        </div>
+
+                    </div>
+                </div>
+             
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="card  mt-5 mb-5">
+
+                    <div class="card-title p-2 text-center">
+                        <h5> Order Summary </h5>
+                        <hr>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-stripped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart%}
+                                <tr>
+                                    <td>
+                                        <img src="{{item.product.product_image.url}}" height="50px" width="50px" alt="">
+                                    </td> 
+                                    <td>
+                                        {{item.product.name}}
+                                    </td> 
+                                    <td>
+                                        {{item.product_qty}}
+                                    </td> 
+                                    <td>
+                                        {{item.product.selling_price}}
+                                    </td> 
+                                
+                                
+                                
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                        <h6 class="fw-bold">Total <span class="float-end" style="font-size: 20px;" > {{bill_amount}}</span></h6>
+                        <a href="" class="btn btn-primary"> COD | Place Order</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

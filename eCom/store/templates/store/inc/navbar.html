@@ -27,6 +27,18 @@
 
 }
 
+.cart-count{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+
+  padding: 3px;
+  
+  margin-top: -10px;
+  position: absolute;
+  margin-top: -2px;
+  margin-left: -18px;
+}
+
 /* .navbar-brand {
   color: #fff !important;
   font-weight: 600;
@@ -89,7 +101,7 @@ body {
             <i class="bi bi-search search-icon"></i>
 
           </div>
-          <a href="{% url 'cart' %}"><i class="bi bi-bag-heart " style="font-size: 24px; color: rgba(146, 10, 10, 0.932);margin-right: 8px;"></i></a>
+          <a href="{% url 'cart' %}"><i class="bi bi-cart-fill" style="font-size: 30px; color: rgb(10, 9, 9);"></i> <span class="cart-count">2</span></a>
           <i class="bi bi-person-add" style="font-size: 27px; color: rgb(10, 9, 9);"></i>
         </form>
       </div>

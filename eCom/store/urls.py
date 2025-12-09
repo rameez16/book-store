@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views 
 
-from store.controller import authview,cart
+from store.controller import authview,cart,checkout
 
 
 urlpatterns = [
@@ -19,7 +19,10 @@ urlpatterns = [
     path('add-to-cart',cart.addtocart,name='add-to-cart'),
     path('cart',cart.cartview,name='cart'),
     path('update-cart',cart.updatecart,name='update-cart'),
-    path('delete-cart-item',cart.delete_cart_item,name='delete-cart-item')
+    path('delete-cart-item',cart.delete_cart_item,name='delete-cart-item'),
+    
+     path('checkout/',checkout.index,name='checkout')
+   
 ]
 
 
