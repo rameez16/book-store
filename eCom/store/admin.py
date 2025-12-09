@@ -8,6 +8,10 @@ admin.site.register(Category)
 admin.site.register(ProductItem)
 admin.site.register(Cart)
 
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(Profile)
+
 
 
 

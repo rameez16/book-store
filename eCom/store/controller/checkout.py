@@ -28,5 +28,9 @@ def index(request):
         return JsonResponse({'status':'user not authenticated'})  
     
 
+
+
+def place_order(request):
+    pass
     
     
