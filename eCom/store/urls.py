@@ -21,7 +21,9 @@ urlpatterns = [
     path('update-cart',cart.updatecart,name='update-cart'),
     path('delete-cart-item',cart.delete_cart_item,name='delete-cart-item'),
     
-     path('checkout/',checkout.index,name='checkout')
+     path('checkout/',checkout.index,name='checkout'),
+     path('place-order',checkout.place_order,name="placeorder"),
+     path('proceed-to-pay/',checkout.razorpay_check,name='proceed-to-pay'),
    
 ]
 

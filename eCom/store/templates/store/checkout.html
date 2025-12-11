@@ -26,43 +26,45 @@
 
                             <div class="col-md-6">
                                 <label for="">First Name</label>
-                                <input type="text" placeholder="enter first name" class="form-control">
+                                <input type="text" placeholder="enter first name" class="form-control" required name="firstname" value="{{request.user.first_name}}" >
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">Last Name</label>
-                                <input type="text" placeholder="enter last name" class="form-control">
+
+
+                                <input type="text" placeholder="enter last name" class="form-control" required name="lastname" value="{{request.user.last_name}}"  >
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">e-mail</label>
-                                <input type="email" placeholder="enter email name" class="form-control">
+                                <input type="email" placeholder="enter email name" class="form-control" required name="email" value="{{request.user.email}}" >
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">Phone</label>
-                                <input type="text" placeholder="enter phone number" class="form-control">
+                                <input type="text" placeholder="enter phone number" class="form-control" required name="Phone" value="{{userprofile.phone}}" >
 
                             </div>
 
                             <div class="col-md-12">
                                 <label for="">Address</label>
-                                <textarea type="text" placeholder="enter first Address" class="form-control"></textarea>
+                                <textarea type="text" placeholder="enter first Address" class="form-control" required name="Address"  >{{userprofile.address}}</textarea>
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">State</label>
-                                <input type="text" placeholder="enter state" class="form-control">
+                                <input type="text" placeholder="enter state" class="form-control" required name="State" value="{{userprofile.state}}" >
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">Country</label>
-                                <input type="text" placeholder="enter country" class="form-control">
+                                <input type="text" placeholder="enter country" class="form-control" required name="Country" value="{{userprofile.country}}" >
 
                             </div>
                             <div class="col-md-6">
                                 <label for="">PinCode</label>
-                                <input type="text" placeholder="enter PinCode" class="form-control">
+                                <input type="text" placeholder="enter PinCode" class="form-control" required name="PinCode" value="{{userprofile.pincode}}" >
 
                             </div>
 
@@ -123,6 +125,9 @@
                         <h6 class="fw-bold">Total <span class="float-end" style="font-size: 20px;">
                                 {{bill_amount}}</span></h6>
                         <a href="" class="btn btn-primary"> COD | Place Order</a>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-secondary paywithrazorpay w-100">Pay with Razorpay</button>
+                        </div>
                     </div>
                 </div>
 
@@ -134,3 +139,9 @@
 </div>
 
 {% endblock %}
+
+
+{% block script %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+{% endblock script %}
