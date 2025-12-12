@@ -10,6 +10,7 @@
 <div class="container mt-4">
 
     <form action="{% url 'placeorder' %}" method="POST">
+        {% csrf_token %}
 
         <div class="row">
             <div class="col-md-7">
@@ -50,6 +51,11 @@
                             <div class="col-md-12">
                                 <label for="">Address</label>
                                 <textarea type="text" placeholder="enter first Address" class="form-control" required name="Address"  >{{userprofile.address}}</textarea>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">City</label>
+                                <input type="text" placeholder="enter city" class="form-control" required name="City" value="{{userprofile.state}}" >
 
                             </div>
                             <div class="col-md-6">
@@ -124,7 +130,8 @@
 
                         <h6 class="fw-bold">Total <span class="float-end" style="font-size: 20px;">
                                 {{bill_amount}}</span></h6>
-                        <a href="" class="btn btn-primary"> COD | Place Order</a>
+                                <input type="hidden" value="COD" name="payment_mode">
+                        <button class="btn btn-primary" type="submit"> COD | Place Order</button>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-secondary paywithrazorpay w-100">Pay with Razorpay</button>
                         </div>

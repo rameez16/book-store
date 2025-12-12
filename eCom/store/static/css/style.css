@@ -184,3 +184,23 @@
         opacity: 0;
     }
 }
+
+
+/* CSS Scroll Snap. */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.scroll-container {
+    height: 100vh;                 /* full screen height */
+    overflow-y: scroll;            /* enable scrolling */
+    scroll-snap-type: y mandatory; /* snap vertically */
+    scroll-behavior: smooth;       /* smooth snapping */
+}
+
+.scroll-section {
+    height: 100vh;                 /* each section = full page */
+    scroll-snap-align: start;      /* snap at start of each section */
+}

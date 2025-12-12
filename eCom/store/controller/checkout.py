@@ -54,6 +54,7 @@ def place_order(request):
             userprofile.save()
             
         new_order=Order()
+        new_order.user=request.user
         new_order.fname=request.POST.get('firstname')
         new_order.lname=request.POST.get('lastname')
         new_order.email=request.POST.get('email')
@@ -66,11 +67,11 @@ def place_order(request):
 
 
         new_order.payment_mode=request.POST.get('payment_mode')
-        new_order.payment_id=request.POST.get('payment_id')
+        new_order.payment_id=request.POST.get('payment_mode')
 
 
         cart=Cart.objects.filter(user=request.user)
-        cart_total_price=sum( item.selling_price*item.product_qty for item in cart)
+        cart_total_price=sum( item.product.selling_price*item.product_qty for item in cart)
         new_order.total_price=cart_total_price
         tracking_no='Amrita'+str(random.randint(11111111,99999999))
         
@@ -91,15 +92,15 @@ def place_order(request):
         
         Cart.objects.filter(user=request.user).delete()
         
-        messages.success.filter(request,"Your order has been successfully completed")
+        messages.success(request,"Your order has been successfully completed")
         
-        payMode =request.POST.get("payment mode")
+        payMode =request.POST.get("payment_mode")
         
         if payMode == 'Paid by Razorpay' :
             
             return JsonResponse({'status':"Your order has been placed successfully "})
         
-        return render('/')
+        return redirect('/')
             
 def razorpay_check(request):
     

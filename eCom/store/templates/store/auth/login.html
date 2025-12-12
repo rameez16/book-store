@@ -1,41 +1,86 @@
 {% extends 'store/layouts/main.html' %}
+{% load static %}
 
 
 
 {% block content%}
 
-<div class="container">
+<style>
+    .sign-in-btn{
 
-    <div class="row-justify-content-center">
+        background-color: black;
+        color: antiquewhite;
+        border-radius: 0 !important;
 
+    }
+</style>
+
+<div class="container h-100 ">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 p-4">
+
+            <div class="card mt-5 shadow ">
+
+                <div class="card-title p-3">
+                    <div class="text-center">
+                        <h4>Welcome Back</h4>
+                        <p>please enter your details</p>
+                    </div>
+                    <hr width="40%" class="w-50 mx-auto">
+                    
+                </div>
+              
+                <div class="card-body">
+
+                    <form action="" method="POST">
+
+                        {% csrf_token %}
+    
+                       
+    
+                        
+                        <div class="form-group mt-2">
+                            <label for="" style="font-size: 13px;" class="mb-2">UserName</label>      
+                            <input type="text" class="form-control" name="Username" placeholder="Enter Username">
+                        </div>
+    
+                        <div class="form-group mt-2">
+                            <label for="" style="font-size: 14px;" class="mb-2">Password</label>  
+                            <input type="password" class="form-control" name="Password" placeholder="Enter Password">
+    
+                        </div>
+                        
+                        <span class="float-end pt-2" style="font-size: 14px;">forgot-password?</span>
+
+                        <div class="button-group">
+
+                        <button type="submit" class="btn   p-2 mt-4 w-100 sign-in-btn ">Sign-in</button>
+                        <button type="submit" class="btn   p-2 mt-3 w-100 sign-in-btn "> <i class="bi bi-google"></i> Sign-in with google</button>  
+                         
+                        </div>
+
+                        
+    
+                      
+    
+                    </form>
+                       
+                </div>
+                <div class="card-footer">
+                    <div class="mt-2">
+                        <p class="py-1"> Don't have an account? <a href=""> Sign-Up </a> </p>
+                     </div> 
+
+                </div>
+              
+               
+            </div>
+        </div>
         <div class="col-md-6">
 
-            <div class="card-body">
-                <form action="" method="POST">
-
-                    {% csrf_token %}
-
-                    <div class="text-center">
-                        <h4>Login</h4>
-                    </div>
-                    <hr>
-
-
-                    <div class="form-group">
-                        <label for=""> UserName : </label>
-                        <input type="text" class="form-control" name="Username" placeholder="Enter User Name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for=""> Password : </label>
-                        <input type="password" class="form-control" name="Password" placeholder="Enter Password">
-
-                    </div>
-
-                    <button type="submit" class="btn float-end shadow btn-secondary px-4">Login</button> 
-
-                </form>
-            </div>
+            <img src="{% static 'images/books.png' %}" width="300px" height="300px" style="margin-top: 200px;margin-left: 100px;" alt="">
         </div>
     </div>
 </div>
