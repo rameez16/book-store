@@ -1,5 +1,5 @@
 {% extends 'store/layouts/main.html' %}
-
+{% load static %}
 {% block content %}
 
 <style>
@@ -11,19 +11,19 @@
 }
 
 .container{
-    background-color: rgba(197, 193, 193, 0.422);
+    background-color: rgb(255, 255, 255);
 }
 </style>
 
-    <div class="container h-100 w-100">
+    <div class="container h-100 w-100 mt-5">
        
 
-        <div class="row justify-content-center">
+        <div class="row ">
 
             <div class="col-md-6 ">
              
                 <div class="card mt-5">
-                <h1 class="text-center mt-3" style="font-size:24px;">Sign Up for Book Lunge</h1>   
+                <h1 class="text-center mt-3" style="font-size:24px;">Sign Up for Scriptorium</h1>   
                 <p class="text-center">create your account or <a href="">login</a></p>
 
                 <form action="" method="POST" class="p-3">
@@ -31,7 +31,7 @@
                     {% csrf_token %}
 
                     <div class="form-group mt-2">
-                        <label for="">username : </label>
+                        <label for="">Username : </label>
                         {{form.username}}
                     </div>
                      
@@ -77,7 +77,7 @@
 
 
                     <div class="form-group justify-content-center">
-                        <button class="btn btn-success text-center justify-content-center float-right w-100" style="background-color: rgba(17, 103, 132, 0.874);">Register</button>
+                        <button class="btn btn-success text-center justify-content-center float-right w-100" style="background-color: rgba(0, 0, 0, 0.966);">Register</button>
                     </div>
 
           
@@ -93,6 +93,11 @@
 
            
                 
+            </div>
+
+            <div class="col-md-6">
+
+                <img src="{% static 'images/register-img.png' %}" width="400px" height="400px" style="margin-top:50px;margin-left: 200px;" alt="">
             </div>
 
           

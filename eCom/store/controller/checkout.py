@@ -84,6 +84,11 @@ def place_order(request):
         
         
         for item in cart:
+           
+           OrderItem.objects.create(
+               order=new_order,product=item.product,price=item.product.selling_price,quantity=item.product_qty
+           )
+           
            if ProductItem.objects.filter(id=item.product.id).exists():
                
                ordered_product= ProductItem.objects.filter(id=item.product.id).first()
@@ -100,7 +105,7 @@ def place_order(request):
             
             return JsonResponse({'status':"Your order has been placed successfully "})
         
-        return redirect('/')
+        return redirect('order/')
             
 def razorpay_check(request):
     

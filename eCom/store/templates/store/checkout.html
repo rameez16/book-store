@@ -4,7 +4,13 @@
 {% block content %}
 
 
-
+<style>
+    .place-order,.paywithrazorpay{
+        background-color: black;
+        color: aliceblue;
+        border-radius: 0%;
+    }
+</style>
 
 
 <div class="container mt-4">
@@ -131,7 +137,7 @@
                         <h6 class="fw-bold">Total <span class="float-end" style="font-size: 20px;">
                                 {{bill_amount}}</span></h6>
                                 <input type="hidden" value="COD" name="payment_mode">
-                        <button class="btn btn-primary" type="submit"> COD | Place Order</button>
+                        <button class="btn w-100 place-order" type="submit"> COD | Place Order</button>
                         <div class="mt-3">
                             <button type="submit" class="btn btn-secondary paywithrazorpay w-100">Pay with Razorpay</button>
                         </div>

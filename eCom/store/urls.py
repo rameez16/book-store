@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views 
 
-from store.controller import authview,cart,checkout
+from store.controller import authview,cart,checkout,orders
 
 
 urlpatterns = [
@@ -24,6 +24,11 @@ urlpatterns = [
      path('checkout/',checkout.index,name='checkout'),
      path('place-order',checkout.place_order,name="placeorder"),
      path('proceed-to-pay/',checkout.razorpay_check,name='proceed-to-pay'),
+     
+     path('order/',orders.order,name='order')
+     
+     
+     
    
 ]
 

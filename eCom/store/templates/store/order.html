@@ -1,0 +1,153 @@
+{% extends 'store/layouts/main.html'%}
+
+
+{% block content %}
+
+<div class="container h-100">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-5">
+                <div class="card-title">
+                    <h5 class="text-center py-2 px-2 mt-3">My orders</h5s>
+                </div>
+                <div class="card-body">
+                   <div class="table-responsive">
+                    <table class="table table-bordered table-stripped table-hover">
+
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Tracking Number</th>
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for item in orders%}
+
+                            <tr>
+                                <td>{{item.created_at}}</td>
+                                <td>{{item.tracking_no}}</td>
+                                <td>{{item.total_price}}</td>
+                                <td>{{item.status}}</td>
+                                <td>
+                                    <a href="{% url 'order' %}?tracking_no={{ item.tracking_no }}" >
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center">No orders Found</td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Order Details Modal -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header ">
+                <h5 class="modal-title"><span class="text-center">Order Details</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                {% if selected_order %}
+                   <div class="row">
+                    <div class="col-md-6">
+                        <h6>Shipping details</h6>
+                        <hr>
+                        <label for="">FirstName</label>
+                        <div class="border p-1">{{selected_order.fname}}</div>
+                        <label for="">Last Name</label>
+                        <div class="border p-1">{{selected_order.lname}}</div>
+                        <label for="">E-mail</label>
+                        <div class="border p-1">{{selected_order.email}}</div>
+                        <label for="">Phone</label>
+                        <div class="border p-1">{{selected_order.phone}}</div>
+                        <label for="">Address</label>
+                        <div class="border p-1">
+                            {{selected_order.address}}
+                            {{selected_order.city}}
+                            {{selected_order.state}}
+                            {{selected_order.country}}
+                            </div>
+
+                        <label for="" class="mt-2">Zip code</label>
+                        <div class="">{{selected_order.pincode}}</div>    
+                        
+                   </div>
+
+                   <div class="col-md-6">
+
+                    <h6>Order Items</h6>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" style="table-layout: fixed; width:100% ">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Cover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order_item %}
+                                   <tr>
+
+                                   
+                                  <td colspan="2" class="text-center fw-3">{{item.product.name}}</td>
+                                  <td>{{item.quantity}}</td>
+                                  <td>{{item.price}}</td>
+                                  <td><img src="{{item.product.product_image.url}}" style="max-width:60px; height:auto;" alt="product_image"></td>
+                                </tr>
+                                  {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                        <h4 >Grand Total : <span class="float-end" style="color: cadetblue;">Rs. {{ selected_order.total_price }}</span></h4>
+                        <h6 class="border p-2">Payment mode : {{selected_order.payment_mode}} </h6>
+                        <h6 class="border p-2">Order status : {{selected_order.status}} </h6>
+                        <h6 class="border p-2">Tracking No : {{selected_order.tracking_no}} </h6>
+                    </div>
+                    
+                   </div>
+            </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+
+{% if selected_order %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    new bootstrap.Modal(
+        document.getElementById('orderDetailsModal')
+    ).show();
+});
+</script>
+{% endif %}
+
+{% endblock %}
