@@ -2,7 +2,6 @@
 
 An Online Book Store Built with Django
 
-Ancient Words. Endless Worlds.
 
 Scriptorium is a modern Django-based e-commerce web application that allows users to browse books, add them to cart, place orders, and make secure payments using Razorpay.
 The platform focuses on curated reading, combining a clean UI with practical e-commerce features.
