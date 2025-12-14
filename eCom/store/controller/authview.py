@@ -7,9 +7,9 @@ from store.form import CustomUserForm
 
 def register(request):
     
-    form=CustomUserForm()   # empty form is  created   and
+    form=CustomUserForm()   # empty form initialized
     
-    if request.method=='POST':    # when user click submit form method become post 
+    if request.method=='POST':    # when user click submit 
         
         form=CustomUserForm(request.POST)  # filled the form with data 
         if form.is_valid():
@@ -24,12 +24,6 @@ def register(request):
 
 
 
-# {
-#     "username": "deepthi",
-#     "email": "test@gmail.com",
-#     "password1": "abc123",
-#     "password2": "abc123"
-# }
 
 
 def login_page(request):

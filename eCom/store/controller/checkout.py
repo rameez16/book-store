@@ -73,11 +73,11 @@ def place_order(request):
         cart=Cart.objects.filter(user=request.user)
         cart_total_price=sum( item.product.selling_price*item.product_qty for item in cart)
         new_order.total_price=cart_total_price
-        tracking_no='Amrita'+str(random.randint(11111111,99999999))
+        tracking_no='TRN'+str(random.randint(11111111,99999999))
         
         
         while Order.objects.filter(tracking_no=tracking_no).exists():
-            tracking_no='Amrita'+str(random.randint(11111111,99999999))
+            tracking_no='TRN'+str(random.randint(11111111,99999999))
         
         new_order.tracking_no=tracking_no
         new_order.save()

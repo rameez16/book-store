@@ -11,7 +11,7 @@ from django import forms
 class CustomUserForm(UserCreationForm):
     
 # ✔ This class inherits from Django's UserCreationForm.
-# ✔ I override the form fields to add Bootstrap classes + placeholders.
+# ✔ it override the form fields to add Bootstrap classes + placeholders.
     
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control my-2','placeholder':'Enter Username'}))
     email=forms.CharField(widget=forms.TextInput(attrs={'class':'form-control my-2','placeholder':'Enter email'}))
@@ -30,7 +30,8 @@ class CustomUserForm(UserCreationForm):
 # which fields from that model should be used
 
 
-# Meta Class in Simple Terms
+
+
 
 # The Meta class tells Django:
 
