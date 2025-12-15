@@ -1,0 +1,101 @@
+
+{% extends 'store/layouts/main.html' %}
+{% load static %}
+
+
+
+{% block content%}
+
+<style>
+
+.move-to-cart-btn {
+    background: linear-gradient(135deg, #222, #484444) !important;
+    color: #fff !important ;
+    border: none !important;
+    padding: 12px 28px !important;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
+
+.move-to-cart-btn:hover {
+    background: linear-gradient(135deg, #000, #333);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+</style>
+
+   
+ <div class="container p-5 h-100">
+    
+    <div class="row">
+
+        {% if message == 'You are not Logged in' %}
+
+        <div class="container ">
+            <h4>Please login to add item to wishlist </h4>
+        </div>
+
+    
+       
+
+        {% elif not wishlist_count  %}
+        
+        <div class="container ">
+            <h4>Your wishlist is empty</h4>
+        </div>
+       
+        {% else %}
+
+        {% for item in wishlist %}
+        <div class="col-md-12 mt-2 border">
+           
+            <div class="row">
+                <div class="col-md-6 ">
+              
+                    <img src="{{ item.product.product_image.url  }}" alt="" width="100px" height="100px" class="p-2"> 
+                    <h6>{{item.product.name}}</h6>
+                    <p class="fw-2">{{item.product.author}}</p>
+                    Price :<s>{{item.product.original_price}}</s>
+                    <p>Offer Price Rs : {{item.product.selling_price}}</p>
+
+            </div>
+
+            <div class="col-md-6">
+               
+                    <button class="btn btn-outline-secondary float-end m-5 "><i class="bi bi-trash"></i>Remove</button>
+               
+               
+            </div>
+
+            </div>
+            
+             
+           
+        </div>
+        {% endfor %}
+
+        
+    </div>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-end">
+            <form  method="POST" action="{% url 'move-to-cart' %}" >
+                {% csrf_token %}
+            <button class="move-to-cart-btn mt-5 "  >
+                <i class="bi bi-cart4"></i> Move to Cart
+            </button>
+        </form>
+        </div>
+
+        {% endif %}
+    </div>
+ </div>
+
+
+
+
+{% endblock %}

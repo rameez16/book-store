@@ -16,7 +16,7 @@
 }
 
 .navbar .nav-link:hover {
-  color: #e2e2e2 !important;
+  color: #9c0606 !important;
 }
 
 .brand{
@@ -62,11 +62,11 @@ body {
             <a class="nav-link active" aria-current="page"  href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'collections' %}" >Books</a>
+            <a class="nav-link" href="{% url 'collections' %}" >Books <i class="bi bi-book-half"></i></a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href=""  >MysteryBox</a>
+            <a class="nav-link" href="{% url 'wishlist' %}"  >wishlist <i class="bi bi-bag-heart"></i></a>
           </li>
           
           {% if request.user.is_authenticated  %}
@@ -111,7 +111,7 @@ body {
 
           </a>
           
-            <i class="bi bi-person-add" style="font-size: 27px; color: rgb(10, 9, 9);"></i>
+            <p>cart</p>
         </form>
       </div>
     </div>

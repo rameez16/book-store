@@ -99,6 +99,52 @@ $(document).ready(function () {
         });
 
     });
+   
+
+    $(".addtowishlistbtn").on("click", function (e) {
+
+        e.preventDefault();
+
+        console.log("Hi")
+
+        let product_id = $(this).closest(".prod").find('.product-id').val();
+        let token = $('input[name="csrfmiddlewaretoken"]').val();
+
+        $.ajax({
+            method: 'POST',
+            url: '/add-to-wishlist',
+            data: {
+                'product_id': product_id,
+                csrfmiddlewaretoken: token
+            },
+            dataType: 'json',
+            success: function (response) {
+
+                if (response.status === 'User not Authenticated') {
+
+                    alertify.confirm(
+                        "Login Required",
+                        response.message,
+                        function () {
+                            window.location.href = response.redirect_url;
+                        },
+                        function () {
+                            alertify.error("Login cancelled");
+                        }
+                    );
+                }
+
+                else {
+                    alertify.success(response.status);
+                }
+            }
+        });
+
+    });
+
+
+
+
 
 
     // Initialize Alertify with custom settings
