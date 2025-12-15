@@ -18,7 +18,7 @@ a{
 }
 </style>
 
-<div class="container mt-4 mb-4 h-75">
+<div class="container mt-4 mb-4 h-100">
      
     <div class="row">
        {% for item in products %}
@@ -27,7 +27,7 @@ a{
 
         <a href= "{% url 'productview' item.category.slug  item.slug  %}">
            
-            <div class="card">
+            <div class="card mt-5">
                 <div class="card-title" style="background-color: rgba(235, 235, 231, 0.87);height: 30px;margin-top: -3px;">
 
                   <p style="color: rgb(4, 38, 100); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 400; padding:5px;font-size: larger;">In stock</p>

@@ -71,8 +71,8 @@ body {
           
           {% if request.user.is_authenticated  %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {{ request.user  }}
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="fw-3">
+             Hi,{{ request.user  }}
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href= "{% url 'logout' %}" >Log out</a></li>
@@ -101,8 +101,17 @@ body {
             <i class="bi bi-search search-icon"></i>
 
           </div>
-          <a href="{% url 'cart' %}"><i class="bi bi-cart-fill" style="font-size: 30px; color: rgb(10, 9, 9);"></i> <span class="cart-count">2</span></a>
-          <i class="bi bi-person-add" style="font-size: 27px; color: rgb(10, 9, 9);"></i>
+          <a href="{% url 'cart' %}"><i class="bi bi-cart-fill" style="font-size: 30px; color: rgb(10, 9, 9);"></i> 
+            
+            {% if cart_count %}
+            
+             <span class="cart-count">{{ cart_count }}</span>
+            
+            {% endif %}
+
+          </a>
+          
+            <i class="bi bi-person-add" style="font-size: 27px; color: rgb(10, 9, 9);"></i>
         </form>
       </div>
     </div>
